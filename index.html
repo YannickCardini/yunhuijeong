@@ -70,26 +70,38 @@
 
         .profile-img {
             display: block;
-            margin: 0 auto 1.5rem auto;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+            margin: auto;
+            /* MODIFIÉ: Simplification de la marge pour un meilleur centrage avec flexbox */
+            width: 220px;
+            height: 300px;
+            border-radius: 2%;
             object-fit: cover;
         }
 
-        .about-content,
-        .research-content,
-        .teaching-content,
-        .contact-content {
+        .content-section {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
+            align-items: center;
+            /* AJOUTÉ: Pour centrer verticalement les éléments de la section */
         }
 
         .content-left,
         .content-right {
             flex: 1;
             min-width: 300px;
+        }
+
+        .content-right-two-third {
+            flex: 2;
+            /* 1 partie */
+            min-width: 300px;
+        }
+
+        .teaching-division {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         ul {
@@ -102,6 +114,21 @@
             margin-bottom: 0.5rem;
             padding: 0.8rem;
             border-left: 5px solid #333;
+        }
+
+        /* NOUVELLE RÈGLE: Pour la mise en page de la liste de recherche sur les grands écrans */
+        @media (min-width: 992px) {
+            #research .content-right ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem 1rem;
+            }
+
+            .content-right-two-third ul {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem 1rem;
+            }
         }
 
         footer {
@@ -133,19 +160,28 @@
 
     <section id="about">
         <div class="container">
-            <div class="about-content">
-                <div class="content-left">
-            <h2 class="section-title">About Me</h2>
-            <img src="yunhee.jpeg" alt="Yunhui" class="profile-img">
-            </div>
-            <div class="content-right">
-                <h3>Biography</h3>
-                <p>I am a dedicated PhD candidate at the University of [Your University], specializing in Applied
-                    Linguistics. My research focuses on the intersection of language, technology, and pedagogy. I am
-                    passionate about understanding how digital tools can enhance language acquisition, particularly
-                    in the context of second language learning. My academic journey has equipped me with a strong
-                    theoretical foundation and practical research skills.</p>
-            </div>
+            <div class="content-section">
+                <div class="content-left-third">
+                    <img src="yunhee.jpeg" alt="Yunhui" class="profile-img">
+                </div>
+                <div class="content-right-two-third">
+                    <h3>Biography</h3>
+                    <p>I am a dedicated PhD candidate at the University of [Your University], specializing in Applied
+                        Linguistics. My research focuses on the intersection of language, technology, and pedagogy. I am
+                        passionate about understanding how digital tools can enhance language acquisition, particularly
+                        in the context of second language learning. My academic journey has equipped me with a strong
+                        theoretical foundation and practical research skills.</p>
+                    <h3>Research Interests</h3>
+                    <ul>
+                        <li><strong>PhD in Second Language Acquisition</strong> - University of [Your University],
+                            [Year] - Present</li>
+                        <li><strong>MA in Applied Linguistics</strong> - [Previous University], [Year]</li>
+                        <li><strong>BA in Korean Language and Literature</strong> - [Undergraduate University], [Year]
+                        <li><strong>BA in Korean Language and Literature</strong> - [Undergraduate University], [Year]
+                        <li><strong>BA in Korean Language and Literature</strong> - [Undergraduate University], [Year]
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -153,7 +189,7 @@
     <section id="research">
         <div class="container">
             <h2 class="section-title">Research</h2>
-            <div class="research-content">
+            <div class="content-section">
                 <div class="content-left">
                     <h3>Current Projects</h3>
                     <p>My doctoral dissertation, tentatively titled "[Your Dissertation Title]", investigates the
@@ -161,15 +197,22 @@
                         project aims to contribute to the growing field of computer-assisted language learning (CALL).
                     </p>
                     <p><a href="#">Download my CV</a> for a full list of publications and conference presentations.</p>
+                    <h3>Previous Projects</h3>
+                    <p>My doctoral dissertation, tentatively titled "[Your Dissertation Title]", investigates the
+                        effectiveness of virtual reality environments for immersive Korean language learning. This
+                        project aims to contribute to the growing field of computer-assisted language learning (CALL).
+                    </p>
                 </div>
                 <div class="content-right">
-                    <h3>Research Interests</h3>
+                    <h3>Research Interests Links</h3>
                     <ul>
-                        <li>Computer-Assisted Language Learning (CALL)</li>
-                        <li>Second Language Acquisition (SLA)</li>
-                        <li>Language Pedagogy</li>
-                        <li>Korean Linguistics</li>
-                        <li>Sociolinguistics</li>
+                        <li><a href="www.google.com">Computer-Assisted Language Learning (CALL)</a></li>
+                        <li><a href="www.google.com">Second Language Acquisition (SLA)</a></li>
+                        <li><a href="www.google.com">Language Pedagogy</a></li>
+                        <li><a href="www.google.com">Corpus Linguistics</a></li>
+                        <li><a href="www.google.com">Language and Identity</a></li>
+                        <li><a href="www.google.com">Korean Linguistics</a></li>
+                        <li><a href="www.google.com">Sociolinguistics</a></li>
                     </ul>
                 </div>
             </div>
@@ -179,7 +222,7 @@
     <section id="teaching">
         <div class="container">
             <h2 class="section-title">Teaching</h2>
-            <div class="teaching-content">
+            <div class="content-section">
                 <div class="content-left">
                     <h3>University Teaching</h3>
                     <p>At the University of [Your University], I have had the pleasure of teaching the following
@@ -191,15 +234,19 @@
                     <p>My teaching philosophy centers on creating an inclusive and interactive learning environment
                         where students feel empowered to engage with the material and each other.</p>
                 </div>
-                <div class="content-right">
-                    <h3>Private Korean Lessons</h3>
-                    <p>I offer private Korean lessons for learners of all levels, from beginner to advanced. My lessons
-                        are tailored to the individual needs and goals of each student, focusing on practical
-                        communication skills.</p>
-                    <p>Whether you are preparing for a trip to Korea, aiming to pass the TOPIK exam, or simply have a
-                        passion for the language, I can help you on your learning journey.</p>
-                    <p>Please feel free to <a href="#contact">contact me</a> for more information on rates and
-                        availability.</p>
+                <div class="content-right teaching-division">
+                    <div>
+                        <h3>Private Korean Lessons</h3>
+                        <p>I offer private Korean lessons for learners of all levels, from beginner to advanced. My
+                            lessons
+                            are tailored to the individual needs and goals of each student, focusing on practical
+                            communication skills.</p>
+                        <p>Whether you are preparing for a trip to Korea, aiming to pass the TOPIK exam, or simply have
+                            a
+                            passion for the language, I can help you on your learning journey. Please feel free to <a
+                                href="#contact">contact me</a> for more information on rates and
+                            availability.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -208,14 +255,16 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Contact</h2>
-            <div class="contact-content">
-                <p>I am always open to discussing research collaborations, teaching opportunities, or private tutoring
+            <div class="content-section">
+                <p style="text-align: center; width: 100%;">I am always open to discussing research collaborations,
+                    teaching opportunities, or private tutoring
                     inquiries. Please feel free to reach out to me via email or connect with me on professional
                     networks.</p>
-                <ul>
-                    <li><strong>Email:</strong> <a href="mailto:jane.doe@email.com">jane.doe@email.com</a></li>
-                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/janedoe"
-                            target="_blank">linkedin.com/in/janedoe</a></li>
+                <ul style="margin: auto;">
+                    <li><strong>Email:</strong> <a href="mailto:yunhui.scholar@email.com">yunhui.scholar@email.com</a>
+                    </li>
+                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/yunhui-profile"
+                            target="_blank">linkedin.com/in/yunhui-profile</a></li>
                     <li><strong>University Profile:</strong> <a href="#" target="_blank">Link to University Profile
                             Page</a></li>
                 </ul>
@@ -225,7 +274,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Jane Doe. All Rights Reserved.</p>
+            <p>&copy; 2025 Yunhui. All Rights Reserved.</p>
         </div>
     </footer>
 
